@@ -7,8 +7,11 @@
 //
 
 #import "ViewController.h"
+@import PDFKit;
 
 @interface ViewController ()
+
+@property (weak, nonatomic) IBOutlet PDFView *pdfView;
 
 @end
 
@@ -17,6 +20,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    NSURL *documentURL = [[NSBundle mainBundle] URLForResource:@"サンプル" withExtension:@"pdf"];
+    PDFDocument *document = [[PDFDocument alloc] initWithURL:documentURL];
+    self.pdfView.document = document;
 }
 
 

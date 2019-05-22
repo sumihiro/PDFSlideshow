@@ -13,6 +13,7 @@
 		A4CAC36C2294C51E00B6C930 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4CAC36B2294C51E00B6C930 /* Assets.xcassets */; };
 		A4CAC36F2294C51E00B6C930 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4CAC36D2294C51E00B6C930 /* LaunchScreen.storyboard */; };
 		A4CAC3722294C51E00B6C930 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4CAC3712294C51E00B6C930 /* main.m */; };
+		A4CAC3792294C7C500B6C930 /* サンプル.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A4CAC3782294C7C500B6C930 /* サンプル.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		A4CAC36E2294C51E00B6C930 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A4CAC3702294C51E00B6C930 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4CAC3712294C51E00B6C930 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A4CAC3782294C7C500B6C930 /* サンプル.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "サンプル.pdf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				A4CAC3652294C51C00B6C930 /* ViewController.h */,
 				A4CAC3662294C51C00B6C930 /* ViewController.m */,
 				A4CAC3682294C51C00B6C930 /* Main.storyboard */,
+				A4CAC3782294C7C500B6C930 /* サンプル.pdf */,
 				A4CAC36B2294C51E00B6C930 /* Assets.xcassets */,
 				A4CAC36D2294C51E00B6C930 /* LaunchScreen.storyboard */,
 				A4CAC3702294C51E00B6C930 /* Info.plist */,
@@ -131,6 +134,7 @@
 				A4CAC36F2294C51E00B6C930 /* LaunchScreen.storyboard in Resources */,
 				A4CAC36C2294C51E00B6C930 /* Assets.xcassets in Resources */,
 				A4CAC36A2294C51C00B6C930 /* Main.storyboard in Resources */,
+				A4CAC3792294C7C500B6C930 /* サンプル.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
