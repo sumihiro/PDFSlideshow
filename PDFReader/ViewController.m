@@ -25,6 +25,8 @@ const NSTimeInterval MinInterval = 0.5;
 @property (nonatomic, readwrite) NSTimeInterval slideInterval;
 @property (nonatomic, strong) NSTimer *timer;
 
+@property (nonatomic, strong) PDFDocument *document;
+
 @end
 
 @implementation ViewController
@@ -37,9 +39,7 @@ const NSTimeInterval MinInterval = 0.5;
     self.pdfView.displayDirection = kPDFDisplayDirectionHorizontal;
     self.pdfView.autoScales = true;
     
-    NSURL *documentURL = [[NSBundle mainBundle] URLForResource:@"サンプル" withExtension:@"pdf"];
-    PDFDocument *document = [[PDFDocument alloc] initWithURL:documentURL];
-    self.pdfView.document = document;
+    self.pdfView.document = self.document;
 
     self.slideInterval = 2.0;
     
@@ -77,6 +77,20 @@ const NSTimeInterval MinInterval = 0.5;
 
 - (IBAction)intervalSliderChanged:(UISlider*)sender {
     self.slideInterval = sender.value * MaxInterval + MinInterval;
+}
+
+- (void)openFileAtURL:(NSURL*)url {
+    PDFDocument *document = [[PDFDocument alloc] initWithURL:url];
+    if (!document) {
+        NSLog(@"error URL: %@", url);
+        UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"エラー" message:@"ファイルが開けません" preferredStyle:UIAlertControllerStyleAlert];
+        [ac addAction:[UIAlertAction actionWithTitle:@"閉じる" style:UIAlertActionStyleDefault handler:nil]];
+        [self presentViewController:ac animated:YES completion:nil];
+        return;
+    }
+    self.document = document;
+
+    self.pdfView.document = document;
 }
 
 - (void)slide {

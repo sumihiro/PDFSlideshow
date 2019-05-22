@@ -7,8 +7,11 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
 
 @interface AppDelegate ()
+
+@property (nonatomic, weak) ViewController *pdfViewController;
 
 @end
 
@@ -17,7 +20,50 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+
+    NSURL *toURL = [[NSBundle mainBundle] URLForResource:@"サンプル" withExtension:@"pdf"];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults registerDefaults:@{ @"DocumentURL": toURL }];
+    toURL = [defaults URLForKey:@"DocumentURL"];
+    
+    UINavigationController *nc = (UINavigationController*)self.window.rootViewController;
+    self.pdfViewController = (ViewController*)nc.viewControllers[0];
+    [self.pdfViewController openFileAtURL:toURL];
+
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    NSLog(@"open: %@", url);
+
+    NSString *fromPath = url.path;
+    NSString *fromFileName = [fromPath lastPathComponent];
+    NSString *documentsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    NSString *toPath = [documentsPath stringByAppendingPathComponent:fromFileName];
+    
+    NSLog(@"copy from: %@ to: %@", fromPath, toPath);
+    NSFileManager *manager = [NSFileManager defaultManager];
+    if ([manager fileExistsAtPath:toPath]) {
+        NSError *err;
+        if ([manager removeItemAtPath:toPath error:&err] != YES) {
+            UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"エラー" message:err.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+            [ac addAction:[UIAlertAction actionWithTitle:@"閉じる" style:UIAlertActionStyleDefault handler:nil]];
+            [self.window.rootViewController presentViewController:ac animated:YES completion:nil];
+        }
+    }
+    NSError *err;
+    if ([manager copyItemAtPath:fromPath toPath:toPath error:&err] != YES) {
+        UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"エラー" message:err.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+        [ac addAction:[UIAlertAction actionWithTitle:@"閉じる" style:UIAlertActionStyleDefault handler:nil]];
+        [self.window.rootViewController presentViewController:ac animated:YES completion:nil];
+    } else {
+        NSURL *toURL = [NSURL fileURLWithPath:toPath];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setURL:toURL forKey:@"DocumentURL"];
+        [self.pdfViewController openFileAtURL:toURL];
+    }
+    
+    return true;
 }
 
 
