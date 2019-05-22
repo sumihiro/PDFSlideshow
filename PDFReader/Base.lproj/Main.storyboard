@@ -37,6 +37,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lt4-MC-TmZ" customClass="PDFView">
                                 <rect key="frame" x="0.0" y="70" width="768" height="954"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="zz9-sB-kri" appends="YES" id="axr-jw-C3e"/>
+                                    <outletCollection property="gestureRecognizers" destination="Juk-WP-CRW" appends="YES" id="2RR-Dn-OJL"/>
+                                    <outletCollection property="gestureRecognizers" destination="xK7-SO-d2q" appends="YES" id="4Ya-tj-TCs"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -83,6 +89,21 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="zz9-sB-kri">
+                    <connections>
+                        <action selector="tapPDFView:" destination="BYZ-38-t0r" id="1h4-sO-JP4"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="Juk-WP-CRW">
+                    <connections>
+                        <action selector="pushPrev:" destination="BYZ-38-t0r" id="X7e-hI-nRW"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="xK7-SO-d2q">
+                    <connections>
+                        <action selector="pushNext:" destination="BYZ-38-t0r" id="XAM-8E-SFJ"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="138.28125" y="137.6953125"/>
         </scene>

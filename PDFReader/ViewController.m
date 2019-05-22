@@ -67,6 +67,10 @@
     [self updateViews];
 }
 
+- (IBAction)tapPDFView:(id)sender {
+    [self.navigationController setNavigationBarHidden:!self.navigationController.navigationBarHidden animated:YES];
+}
+
 - (void)slide {
     __weak typeof(self) this = self;
     self.timer = [NSTimer timerWithTimeInterval:self.slideInterval repeats:YES block:^(NSTimer * _Nonnull timer) {
