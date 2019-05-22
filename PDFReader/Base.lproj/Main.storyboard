@@ -48,9 +48,24 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Xwu-2J-ofp"/>
+                    <navigationItem key="navigationItem" id="Xwu-2J-ofp">
+                        <rightBarButtonItems>
+                            <barButtonItem title="→" id="KhZ-eR-UoP">
+                                <connections>
+                                    <action selector="pushNext:" destination="BYZ-38-t0r" id="yVu-oZ-fzc"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="←" id="qxf-02-KrY">
+                                <connections>
+                                    <action selector="pushPrev:" destination="BYZ-38-t0r" id="M6l-cq-y47"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
+                        <outlet property="nextButton" destination="KhZ-eR-UoP" id="zfV-2X-LXb"/>
                         <outlet property="pdfView" destination="Lt4-MC-TmZ" id="NbA-La-UH2"/>
+                        <outlet property="prevButton" destination="qxf-02-KrY" id="7x0-EH-ZSo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -12,6 +12,8 @@
 @interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet PDFView *pdfView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *nextButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *prevButton;
 
 @end
 
@@ -21,6 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.pdfView.displayMode = kPDFDisplaySinglePage;
     self.pdfView.displayDirection = kPDFDisplayDirectionHorizontal;
     
     NSURL *documentURL = [[NSBundle mainBundle] URLForResource:@"サンプル" withExtension:@"pdf"];
@@ -28,5 +31,11 @@
     self.pdfView.document = document;
 }
 
+- (IBAction)pushNext:(id)sender {
+    [self.pdfView goToNextPage:nil];
+}
+
+- (IBAction)pushPrev:(id)sender {
+    [self.pdfView goToPreviousPage:nil];
 
 @end
