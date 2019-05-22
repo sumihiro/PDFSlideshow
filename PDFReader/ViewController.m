@@ -31,6 +31,7 @@
     
     self.pdfView.displayMode = kPDFDisplaySinglePage;
     self.pdfView.displayDirection = kPDFDisplayDirectionHorizontal;
+    self.pdfView.autoScales = true;
     
     NSURL *documentURL = [[NSBundle mainBundle] URLForResource:@"サンプル" withExtension:@"pdf"];
     PDFDocument *document = [[PDFDocument alloc] initWithURL:documentURL];
