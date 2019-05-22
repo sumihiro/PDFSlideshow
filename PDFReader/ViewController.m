@@ -20,6 +20,7 @@ const NSTimeInterval MinInterval = 0.5;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *nextButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *prevButton;
 @property (weak, nonatomic) IBOutlet UISlider *intervalSlider;
+@property (weak, nonatomic) IBOutlet UILabel *intervalLabel;
 
 @property (nonatomic, readwrite) BOOL isRunning;
 @property (nonatomic, readwrite) NSTimeInterval slideInterval;
@@ -77,6 +78,7 @@ const NSTimeInterval MinInterval = 0.5;
 
 - (IBAction)intervalSliderChanged:(UISlider*)sender {
     self.slideInterval = sender.value * MaxInterval + MinInterval;
+    self.intervalLabel.text = [self formatInterval:self.slideInterval];
 }
 
 - (void)openFileAtURL:(NSURL*)url {
@@ -108,6 +110,10 @@ const NSTimeInterval MinInterval = 0.5;
     [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
 }
 
+- (NSString*)formatInterval:(NSTimeInterval)interval {
+    return [NSString stringWithFormat:@"%.0f秒", interval];
+}
+
 - (void)updateViews {
     self.startButton.enabled = !self.isRunning;
     self.pauseButton.enabled = self.isRunning;
@@ -115,6 +121,7 @@ const NSTimeInterval MinInterval = 0.5;
     self.prevButton.enabled = self.pdfView.canGoToPreviousPage;
     self.intervalSlider.enabled = !self.isRunning;
     self.intervalSlider.value = (self.slideInterval - MinInterval) / MaxInterval;
+    self.intervalLabel.text = [self formatInterval:self.slideInterval];
 }
 
 - (void)statusLog {

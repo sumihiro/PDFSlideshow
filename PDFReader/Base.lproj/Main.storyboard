@@ -30,35 +30,55 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="lme-X6-M5t">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lt4-MC-TmZ" customClass="PDFView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iSo-m7-VaI" customClass="PDFView">
                                 <rect key="frame" x="0.0" y="70" width="768" height="954"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="zz9-sB-kri" appends="YES" id="axr-jw-C3e"/>
-                                    <outletCollection property="gestureRecognizers" destination="Juk-WP-CRW" appends="YES" id="2RR-Dn-OJL"/>
-                                    <outletCollection property="gestureRecognizers" destination="xK7-SO-d2q" appends="YES" id="4Ya-tj-TCs"/>
+                                    <outletCollection property="gestureRecognizers" destination="zz9-sB-kri" appends="YES" id="ZR5-ZV-oWU"/>
+                                    <outletCollection property="gestureRecognizers" destination="xK7-SO-d2q" appends="YES" id="tWq-0L-VNH"/>
+                                    <outletCollection property="gestureRecognizers" destination="Juk-WP-CRW" appends="YES" id="guf-zE-Eae"/>
                                 </connections>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Lt4-MC-TmZ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="00c-bd-8hl"/>
-                            <constraint firstItem="Lt4-MC-TmZ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Lfv-qY-g3K"/>
-                            <constraint firstItem="Lt4-MC-TmZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Mm4-ix-j7P"/>
-                            <constraint firstItem="Lt4-MC-TmZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cyX-3t-pPF"/>
+                            <constraint firstItem="iSo-m7-VaI" firstAttribute="trailing" secondItem="Ywr-3s-ANa" secondAttribute="trailing" id="0sU-YB-WTT"/>
+                            <constraint firstItem="iSo-m7-VaI" firstAttribute="bottom" secondItem="Ywr-3s-ANa" secondAttribute="bottom" id="AHs-rI-fBY"/>
+                            <constraint firstItem="iSo-m7-VaI" firstAttribute="top" secondItem="Ywr-3s-ANa" secondAttribute="top" id="fWM-JE-XGC"/>
+                            <constraint firstItem="iSo-m7-VaI" firstAttribute="leading" secondItem="Ywr-3s-ANa" secondAttribute="leading" id="wzT-oG-8ZG"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <viewLayoutGuide key="safeArea" id="Ywr-3s-ANa"/>
                     </view>
                     <navigationItem key="navigationItem" id="Xwu-2J-ofp">
                         <leftBarButtonItems>
+                            <barButtonItem style="plain" id="GfG-2K-69g">
+                                <view key="customView" contentMode="scaleToFill" id="rQh-Pe-OPa">
+                                    <rect key="frame" x="20" y="6.5" width="50" height="37"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120秒" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UOr-kZ-2il">
+                                            <rect key="frame" x="0.0" y="8" width="50" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="UOr-kZ-2il" firstAttribute="leading" secondItem="rQh-Pe-OPa" secondAttribute="leading" id="4IT-kJ-ivs"/>
+                                        <constraint firstItem="UOr-kZ-2il" firstAttribute="centerY" secondItem="rQh-Pe-OPa" secondAttribute="centerY" id="NrC-bb-hU8"/>
+                                        <constraint firstAttribute="trailing" secondItem="UOr-kZ-2il" secondAttribute="trailing" id="P1Z-yE-gyN"/>
+                                    </constraints>
+                                </view>
+                            </barButtonItem>
                             <barButtonItem style="plain" id="xZQ-k1-MOw">
-                                <slider key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="cdV-mK-bfD">
-                                    <rect key="frame" x="20" y="8" width="170" height="34"/>
+                                <slider key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="cdV-mK-bfD">
+                                    <rect key="frame" x="78" y="8" width="170" height="34"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <connections>
                                         <action selector="intervalSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Bxv-wp-hKv"/>
@@ -90,10 +110,11 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="intervalLabel" destination="UOr-kZ-2il" id="Smw-9t-fbl"/>
                         <outlet property="intervalSlider" destination="cdV-mK-bfD" id="l8N-XT-Jre"/>
                         <outlet property="nextButton" destination="KhZ-eR-UoP" id="zfV-2X-LXb"/>
                         <outlet property="pauseButton" destination="8jQ-jn-7hf" id="Vby-V4-XTn"/>
-                        <outlet property="pdfView" destination="Lt4-MC-TmZ" id="NbA-La-UH2"/>
+                        <outlet property="pdfView" destination="iSo-m7-VaI" id="LWi-1e-ytV"/>
                         <outlet property="prevButton" destination="qxf-02-KrY" id="7x0-EH-ZSo"/>
                         <outlet property="startButton" destination="60I-OQ-L7d" id="RUP-NQ-eW3"/>
                     </connections>
@@ -104,14 +125,14 @@
                         <action selector="tapPDFView:" destination="BYZ-38-t0r" id="1h4-sO-JP4"/>
                     </connections>
                 </tapGestureRecognizer>
-                <swipeGestureRecognizer direction="right" id="Juk-WP-CRW">
-                    <connections>
-                        <action selector="pushPrev:" destination="BYZ-38-t0r" id="X7e-hI-nRW"/>
-                    </connections>
-                </swipeGestureRecognizer>
                 <swipeGestureRecognizer direction="left" id="xK7-SO-d2q">
                     <connections>
                         <action selector="pushNext:" destination="BYZ-38-t0r" id="XAM-8E-SFJ"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="Juk-WP-CRW">
+                    <connections>
+                        <action selector="pushPrev:" destination="BYZ-38-t0r" id="X7e-hI-nRW"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
