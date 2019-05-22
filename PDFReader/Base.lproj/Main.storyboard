@@ -56,6 +56,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="Xwu-2J-ofp">
                         <leftBarButtonItems>
+                            <barButtonItem style="plain" id="xZQ-k1-MOw">
+                                <slider key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="cdV-mK-bfD">
+                                    <rect key="frame" x="20" y="8" width="170" height="34"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <connections>
+                                        <action selector="intervalSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Bxv-wp-hKv"/>
+                                    </connections>
+                                </slider>
+                            </barButtonItem>
                             <barButtonItem systemItem="pause" id="8jQ-jn-7hf">
                                 <connections>
                                     <action selector="pushStop:" destination="BYZ-38-t0r" id="hfI-cv-w5z"/>
@@ -81,6 +90,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="intervalSlider" destination="cdV-mK-bfD" id="l8N-XT-Jre"/>
                         <outlet property="nextButton" destination="KhZ-eR-UoP" id="zfV-2X-LXb"/>
                         <outlet property="pauseButton" destination="8jQ-jn-7hf" id="Vby-V4-XTn"/>
                         <outlet property="pdfView" destination="Lt4-MC-TmZ" id="NbA-La-UH2"/>

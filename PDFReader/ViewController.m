@@ -9,6 +9,9 @@
 #import "ViewController.h"
 @import PDFKit;
 
+const NSTimeInterval MaxInterval = 60.0;
+const NSTimeInterval MinInterval = 0.5;
+
 @interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet PDFView *pdfView;
@@ -16,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *pauseButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *nextButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *prevButton;
+@property (weak, nonatomic) IBOutlet UISlider *intervalSlider;
 
 @property (nonatomic, readwrite) BOOL isRunning;
 @property (nonatomic, readwrite) NSTimeInterval slideInterval;
@@ -71,6 +75,10 @@
     [self.navigationController setNavigationBarHidden:!self.navigationController.navigationBarHidden animated:YES];
 }
 
+- (IBAction)intervalSliderChanged:(UISlider*)sender {
+    self.slideInterval = sender.value * MaxInterval + MinInterval;
+}
+
 - (void)slide {
     __weak typeof(self) this = self;
     self.timer = [NSTimer timerWithTimeInterval:self.slideInterval repeats:YES block:^(NSTimer * _Nonnull timer) {
@@ -91,6 +99,8 @@
     self.pauseButton.enabled = self.isRunning;
     self.nextButton.enabled = self.pdfView.canGoToNextPage;
     self.prevButton.enabled = self.pdfView.canGoToPreviousPage;
+    self.intervalSlider.enabled = !self.isRunning;
+    self.intervalSlider.value = (self.slideInterval - MinInterval) / MaxInterval;
 }
 
 - (void)statusLog {
