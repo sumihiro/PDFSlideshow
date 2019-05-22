@@ -12,8 +12,14 @@
 @interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet PDFView *pdfView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *startButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *pauseButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *nextButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *prevButton;
+
+@property (nonatomic, readwrite) BOOL isRunning;
+@property (nonatomic, readwrite) NSTimeInterval slideInterval;
+@property (nonatomic, strong) NSTimer *timer;
 
 @end
 
@@ -30,7 +36,21 @@
     PDFDocument *document = [[PDFDocument alloc] initWithURL:documentURL];
     self.pdfView.document = document;
 
+    self.slideInterval = 2.0;
+    
     [self statusLog];
+    [self updateViews];
+}
+
+- (IBAction)pushStart:(id)sender {
+    self.isRunning = true;
+    [self slide];
+    [self updateViews];
+}
+
+- (IBAction)pushStop:(id)sender {
+    [self.timer invalidate];
+    self.isRunning = false;
     [self updateViews];
 }
 
@@ -46,7 +66,24 @@
     [self updateViews];
 }
 
+- (void)slide {
+    __weak typeof(self) this = self;
+    self.timer = [NSTimer timerWithTimeInterval:self.slideInterval repeats:YES block:^(NSTimer * _Nonnull timer) {
+        [self statusLog];
+        if (this.isRunning) {
+            if (this.pdfView.canGoToNextPage) {
+                [this.pdfView goToNextPage:nil];
+            } else {
+                [this.pdfView goToFirstPage:nil];
+            }
+        }
+    }];
+    [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+}
+
 - (void)updateViews {
+    self.startButton.enabled = !self.isRunning;
+    self.pauseButton.enabled = self.isRunning;
     self.nextButton.enabled = self.pdfView.canGoToNextPage;
     self.prevButton.enabled = self.pdfView.canGoToPreviousPage;
 }

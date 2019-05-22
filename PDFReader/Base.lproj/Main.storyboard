@@ -49,6 +49,18 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="Xwu-2J-ofp">
+                        <leftBarButtonItems>
+                            <barButtonItem systemItem="pause" id="8jQ-jn-7hf">
+                                <connections>
+                                    <action selector="pushStop:" destination="BYZ-38-t0r" id="hfI-cv-w5z"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="play" id="60I-OQ-L7d">
+                                <connections>
+                                    <action selector="pushStart:" destination="BYZ-38-t0r" id="YiL-2d-QLp"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <rightBarButtonItems>
                             <barButtonItem title="→" id="KhZ-eR-UoP">
                                 <connections>
@@ -64,8 +76,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="nextButton" destination="KhZ-eR-UoP" id="zfV-2X-LXb"/>
+                        <outlet property="pauseButton" destination="8jQ-jn-7hf" id="Vby-V4-XTn"/>
                         <outlet property="pdfView" destination="Lt4-MC-TmZ" id="NbA-La-UH2"/>
                         <outlet property="prevButton" destination="qxf-02-KrY" id="7x0-EH-ZSo"/>
+                        <outlet property="startButton" destination="60I-OQ-L7d" id="RUP-NQ-eW3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
