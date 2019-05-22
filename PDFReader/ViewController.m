@@ -21,6 +21,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.pdfView.displayDirection = kPDFDisplayDirectionHorizontal;
+    
     NSURL *documentURL = [[NSBundle mainBundle] URLForResource:@"サンプル" withExtension:@"pdf"];
     PDFDocument *document = [[PDFDocument alloc] initWithURL:documentURL];
     self.pdfView.document = document;
